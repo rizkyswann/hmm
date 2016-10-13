@@ -32,6 +32,15 @@
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_home"
+        android:layout_marginTop="20dp"
+        android:text="Home"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_logout"
         android:layout_marginTop="20dp"
         android:text="Logout"

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -29,7 +30,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private TextView tv_name,tv_email,tv_message;
     private SharedPreferences pref;
-    private AppCompatButton btn_change_password,btn_logout;
+    private AppCompatButton btn_change_password,btn_logout, btn_home;
     private EditText et_old_password,et_new_password;
     private AlertDialog dialog;
     private ProgressBar progress;
@@ -56,8 +57,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         tv_name = (TextView)view.findViewById(R.id.tv_name);
         tv_email = (TextView)view.findViewById(R.id.tv_email);
+        btn_home = (AppCompatButton)view.findViewById(R.id.btn_home);
         btn_change_password = (AppCompatButton)view.findViewById(R.id.btn_chg_password);
         btn_logout = (AppCompatButton)view.findViewById(R.id.btn_logout);
+        btn_home.setOnClickListener(this);
         btn_change_password.setOnClickListener(this);
         btn_logout.setOnClickListener(this);
 
@@ -111,6 +114,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
 
+            case R.id.btn_home:
+                goToHome();
+                break;
             case R.id.btn_chg_password:
                 showDialog();
                 break;
@@ -119,6 +125,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
+    private void goToHome() {
+        Intent home = new Intent(getActivity(), HomeActivitya.class);
+        ((MainActivity)getActivity()).startActivity(home);
+    }
+
 
     private void logout() {
         SharedPreferences.Editor editor = pref.edit();
